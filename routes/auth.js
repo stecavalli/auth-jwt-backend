@@ -58,15 +58,11 @@ router.post("/login", async (req, res) => {
 });
 
 // GET /api/users (solo per utenti autenticati)
-// Ottieni tutti gli utenti (solo se loggato)
-router.get("/users", verifyToken, async (req, res) => {
-  try {
-    const users = await User.find({}, "username"); // solo username
-    res.json({ users });
-  } catch (err) {
-    res.status(500).json({ message: "Errore nel caricamento utenti." });
-  }
+router.get("/me", verifyToken, (req, res) => {
+  res.json({ user: req.user }); // req.user viene dal middleware
 });
+
+module.exports = router;
 
 
 // LOGOUT

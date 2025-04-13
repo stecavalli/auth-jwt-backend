@@ -57,13 +57,17 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// ME
-router.get("/users", verifyToken, async (req, res) => {
+// GET /api/users (solo per utenti autenticati)
+router.get("/users", async (req, res) => {
+  const token = req.cookies.token;
+  if (!token) return res.status(401).json({ message: "Non autenticato" });
+
   try {
-    const users = await User.find({}, "username"); // restituisce solo i nomi utente
-    res.json(users);
+    const decoded = jwt.verify(token, JWT_SECRET);
+    const users = await User.find({}, "username"); // restituisce solo i campi 'username'
+    res.json(users); // oppure { users } se vuoi usare data.users nel frontend
   } catch (err) {
-    res.status(500).json({ message: "Errore nel caricamento utenti" });
+    res.status(401).json({ message: "Token non valido" });
   }
 });
 

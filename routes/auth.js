@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 const User = require("../models/User");
-const verifyToken = require("../middleware/verifyToken");
+const verifyToken = require("verifyToken");
 
 const JWT_SECRET = process.env.JWT_SECRET || "supersegreto";
 
@@ -58,18 +58,16 @@ router.post("/login", async (req, res) => {
 });
 
 // GET /api/users (solo per utenti autenticati)
-router.get("/users", async (req, res) => {
-  const token = req.cookies.token;
-  if (!token) return res.status(401).json({ message: "Non autenticato" });
-
+// Ottieni tutti gli utenti (solo se loggato)
+router.get("/users", verifyToken, async (req, res) => {
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
-    const users = await User.find({}, "username"); // restituisce solo i campi 'username'
-    res.json(users); // oppure { users } se vuoi usare data.users nel frontend
+    const users = await User.find({}, "username"); // solo username
+    res.json({ users });
   } catch (err) {
-    res.status(401).json({ message: "Token non valido" });
+    res.status(500).json({ message: "Errore nel caricamento utenti." });
   }
 });
+
 
 // LOGOUT
 router.post("/logout", (req, res) => {

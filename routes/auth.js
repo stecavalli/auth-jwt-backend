@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 const User = require("../models/User");
+const verifyToken = require("../middleware/verifyToken");
 
 const JWT_SECRET = process.env.JWT_SECRET || "supersegreto";
 
@@ -57,15 +58,12 @@ router.post("/login", async (req, res) => {
 });
 
 // ME
-router.get("/me", (req, res) => {
-  const token = req.cookies.token;
-  if (!token) return res.status(401).json({ message: "Non autenticato" });
-
+router.get("/users", verifyToken, async (req, res) => {
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
-    res.json({ user: { username: decoded.username } });
-  } catch {
-    res.status(401).json({ message: "Token non valido" });
+    const users = await User.find({}, "username"); // restituisce solo i nomi utente
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: "Errore nel caricamento utenti" });
   }
 });
 

@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
 const authRoutes = require("./routes/auth");
 require("dotenv").config();
 
@@ -8,17 +9,18 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(cors({
-  origin: "https://userauthstecavalli.netlify.app" // ✅ consente solo richieste dal tuo frontend su Netlify
+  origin: "https://userauthstecavalli.netlify.app",
+  credentials: true
 }));
-app.use(express.json()); // 🔄 Spostato PRIMA delle rotte
+app.use(cookieParser());
+app.use(express.json());
+
 app.use("/api", authRoutes);
 
-// Test route
 app.get("/", (req, res) => {
   res.send("Ciao dal backend 👋");
 });
 
-// Start server
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log("✅ Connesso a MongoDB");

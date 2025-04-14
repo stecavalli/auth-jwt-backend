@@ -61,9 +61,15 @@ router.post("/login", async (req, res) => {
 router.get("/me", verifyToken, (req, res) => {
   res.json({ user: req.user }); // req.user viene dal middleware
 });
-
-module.exports = router;
-
+// GET /api/users - restituisce la lista di tutti gli utenti (solo se autenticati)
+router.get("/users", verifyToken, async (req, res) => {
+  try {
+    const users = await User.find().select("-password"); // esclude la password
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: "Errore nel recupero degli utenti" });
+  }
+});
 
 // LOGOUT
 router.post("/logout", (req, res) => {

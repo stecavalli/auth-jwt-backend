@@ -72,6 +72,16 @@ router.get("/users", verifyToken, async (req, res) => {
   }
 });
 
+// DELETE /api/users/:username - elimina un utente (protetto)
+router.delete("/users/:username", verifyToken, async (req, res) => {
+  try {
+    const { username } = req.params;
+    await User.deleteOne({ username });
+    res.json({ message: `Utente ${username} eliminato.` });
+  } catch (err) {
+    res.status(500).json({ message: "Errore durante l'eliminazione" });
+  }
+});
 
 // LOGOUT
 router.post("/logout", (req, res) => {

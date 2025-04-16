@@ -1,4 +1,4 @@
-## 🖧🔐 Auth-JWT-Backend
+## 🗄️🔐 Auth-JWT-Backend
 
 This repository contains a backend API for user authentication using JWT (JSON Web Tokens) 
 <br>

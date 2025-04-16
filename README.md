@@ -18,7 +18,7 @@ Environment variables must be set on the [Render](https://www.render.com/) site
 <br>
 The [auth-jwt-frontend](https://github.com/stecavalli/auth-jwt-frontend) repository is an integral part of this project.
 
-# Features
+## ✅ Features
 
 <b>JWT Authentication:</b> Secure login and registration with JWT tokens.
 <br>
@@ -30,7 +30,7 @@ The [auth-jwt-frontend](https://github.com/stecavalli/auth-jwt-frontend) reposit
 <br>
 <b>Logout:</b> Clear JWT cookie on logout.
 
-# Local installation
+## 🖥️ Local installation
 
 <b>Clone the repository:</b>
 <br>
@@ -44,7 +44,7 @@ cd auth-jwt-backend
 npm install
 <br>
 
-<b>Set up environment variables:</b>
+## 🔧 Environment Setup
 
 <i>Create a .env file with the following:</i>
 <br><br>
@@ -54,25 +54,25 @@ JWT_SECRET=your_secret_key
 <br>
 MONGO_URI=your_mongo_database_url
 
-<b>Start the server:</b>
+## ▶️ Start the server:
 
 npm start
 
-# Endpoints
+## 📬 API Endpoints (Used by Frontend)
 
-<b>GET    /api/users:</b> Get the list of all users (protected route, JWT required).
+<b>GET /api/users:</b> Get the list of all users (protected route, JWT required).
 <br>
-<b>GET    /api/me:</b> Get the currently logged-in user's information (protected route, JWT required).
+<b>GET /api/me:</b> Get the currently logged-in user's information (protected route, JWT required).
 <br>
-<b>POST   /api/auth/register:</b> Register a new user.
+<b>POST /api/auth/register:</b> Register a new user.
 <br>
-<b>POST   /api/auth/login:</b> Login and receive a JWT token, stored in an HttpOnly cookie.
+<b>POST /api/auth/login:</b> Login and receive a JWT token, stored in an HttpOnly cookie.
 <br>
-<b>POST   /api/auth/logout:</b> Logout by clearing the JWT cookie.
+<b>POST /api/auth/logout:</b> Logout by clearing the JWT cookie.
 <br>
 <b>DELETE /api/users/:username:</b> Delete a user (protected route, JWT required).
 
-# Technologies
+## 🛠️ Technologies
 
 Node.js
 <br>
@@ -86,6 +86,6 @@ bcrypt
 <br>
 Cookies (HttpOnly)
 
-# Middleware
+## 🧱 Middleware
 
 verifyToken: Middleware to verify the JWT token and protect routes.

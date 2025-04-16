@@ -34,8 +34,6 @@ The [auth-jwt-frontend](https://github.com/stecavalli/auth-jwt-frontend) reposit
 
 <i>Create a .env file with the following:</i>
 <br><br>
-PORT=5000
-<br>
 JWT_SECRET=your_secret_key
 <br>
 MONGO_URI=your_mongo_database_url

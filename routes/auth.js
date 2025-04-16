@@ -66,7 +66,7 @@ router.get("/me", verifyToken, (req, res) => {
 router.get("/users", verifyToken, async (req, res) => {
   try {
     const users = await User.find().select("-password");
-    res.json({ users }); // 👈 questo è importante!
+    res.json({ users });
   } catch (err) {
     res.status(500).json({ message: "Errore nel recupero degli utenti" });
   }

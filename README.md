@@ -30,20 +30,6 @@ The [auth-jwt-frontend](https://github.com/stecavalli/auth-jwt-frontend) reposit
 <br>
 <b>Logout:</b> Clear JWT cookie on logout.
 
-## 🖥️ Local installation
-
-<b>Clone the repository:</b>
-<br>
-git clone https://github.com/stecavalli/auth-jwt-backend.git
-<br>
-cd auth-jwt-backend
-<br>
-
-<b>Install dependencies:</b>
-<br>
-npm install
-<br>
-
 ## 🔧 Environment Setup
 
 <i>Create a .env file with the following:</i>
@@ -53,6 +39,19 @@ PORT=5000
 JWT_SECRET=your_secret_key
 <br>
 MONGO_URI=your_mongo_database_url
+
+## 🖥️ Local installation
+
+<b> 📦 Clone the repository:</b>
+<br>
+git clone https://github.com/stecavalli/auth-jwt-backend.git
+<br>
+cd auth-jwt-backend
+<br>
+
+## 📦 Install dependencies:</b>
+
+npm install
 
 ## ▶️ Start the server:
 

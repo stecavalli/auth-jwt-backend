@@ -55,6 +55,14 @@ npm install
 
 npm start
 
+## 🚀 Deployment  
+You can deploy the backend on platforms like [Render](https://render.com), [Railway](https://railway.app), or [Heroku](https://www.heroku.com/).  
+<br>
+Make sure to set environment variables such as `MONGO_URI` and `JWT_SECRET` 
+<br>
+securely in your deployment dashboard.
+
+
 ## 📬 API Endpoints (Used by Frontend)
 
 <b>GET /api/users:</b> Get the list of all users (protected route, JWT required).

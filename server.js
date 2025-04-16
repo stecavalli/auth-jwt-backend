@@ -18,14 +18,14 @@ app.use(express.json());
 app.use("/api", authRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Ciao dal backend 👋");
+  res.send("Ciao dal backend");
 });
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("✅ Connesso a MongoDB");
+    console.log("Connesso a MongoDB");
     app.listen(port, () => {
-      console.log(`🚀 Server in ascolto su http://localhost:${port}`);
+      console.log(`Server in ascolto su http://localhost:${port}`);
     });
   })
   .catch((err) => console.error("Errore nella connessione a MongoDB:", err));

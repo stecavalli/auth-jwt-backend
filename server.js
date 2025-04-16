@@ -9,7 +9,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(cors({
-  origin: "https://react-jwt-pswcriptate.netlify.app",
+  origin: "https://NOME_SITO_PERSONALIZZATO.netlify.app",
   credentials: true
 }));
 app.use(cookieParser());

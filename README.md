@@ -47,11 +47,11 @@ git clone https://github.com/stecavalli/auth-jwt-backend.git
 cd auth-jwt-backend
 <br>
 
-## 📦 Install dependencies:</b>
+<b> 📦 Install dependencies:</b>
 
 npm install
 
-## ▶️ Start the server:
+<b> ▶️ Start the server:</b>
 
 npm start
 

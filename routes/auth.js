@@ -5,7 +5,7 @@ const router = express.Router();
 const User = require("../models/User");
 const verifyToken = require("../middleware/verifyToken");
 
-const JWT_SECRET = process.env.JWT_SECRET || "TUA_CHIAVE_DI_SICUREZZA";
+const JWT_SECRET = process.env.JWT_SECRET || "TUA_CHIAVE_SEGRETA";
 
 // REGISTER
 router.post("/register", async (req, res) => {

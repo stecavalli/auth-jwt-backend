@@ -25,6 +25,12 @@ app.use(express.static(path.join(__dirname, "public")));
 // Rotte API
 app.use("/api", authRoutes);
 
+// Middleware di gestione errori
+app.use((err, req, res, next) => {
+  console.error(err.stack); // Stampa lo stack dell'errore per il debug
+  res.status(500).json({ message: "Errore interno del server." }); // Risposta generica per l'errore
+});
+
 // Homepage stilizzata
 app.get("/", (req, res) => {
   res.send(`
@@ -108,7 +114,10 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log("Connesso a MongoDB");
     app.listen(port, () => {
-      console.log(`Server in ascolto su http://localhost:${port}`);
+      console.log(`Server in ascolto sulla porta ${port}`);
     });
   })
-  .catch((err) => console.error("Errore nella connessione a MongoDB:", err));
+  .catch((err) => {
+    console.error("Errore nella connessione a MongoDB:", err);
+    process.exit(1); // Termina il processo se la connessione al DB fallisce
+  });

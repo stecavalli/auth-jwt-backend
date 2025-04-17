@@ -13,7 +13,7 @@ const port = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
-  origin: "https://NOME_SITO_PERSONALIZZATO.netlify.app", // Cambia con il tuo sito reale
+  origin: "https://react-jwt-pswcriptate.netlify.app", // Cambia con il tuo sito reale
   credentials: true
 }));
 app.use(cookieParser());

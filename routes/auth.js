@@ -76,10 +76,6 @@ router.get("/", (req, res) => {
 });
 
 // GET /api/me (solo per utenti autenticati)
-router.get("/me", verifyToken, (req, res) => {
-  const { id, username, email } = req.user; // user è passato dal middleware
-  res.json({ user: { id, username, email } });
-});
 router.get("/me", verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("id email username");

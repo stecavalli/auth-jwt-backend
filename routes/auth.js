@@ -76,15 +76,11 @@ router.get("/", (req, res) => {
 });
 
 // GET /api/me (solo per utenti autenticati)
-router.get("/me", verifyToken, async (req, res) => {
-  try {
-    const user = await User.findById(req.user.id).select("id email username");
-    res.json(user);
-  } catch (error) {
-    console.error(err);
-    res.status(500).json({ message: "Errore nel recupero utente" });
-  }
+router.get("/me", verifyToken, (req, res) => {
+  const { id, username, email } = req.user; // user è passato dal middleware
+  res.json({ user: { id, username, email } });
 });
+
 
 // GET /api/users - restituisce la lista utenti con chiave "users"
 router.get("/users", verifyToken, async (req, res) => {

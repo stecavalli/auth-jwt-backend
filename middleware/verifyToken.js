@@ -7,7 +7,7 @@ const verifyToken = (req, res, next) => {
   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
     if (err) return res.status(403).json({ message: "Token non valido" });
     console.log("Payload del token:", user);
-    req.user = user; // user contiene { id, username, ... }
+    req.user = user;
     next();
   });
 };

@@ -88,7 +88,7 @@ app.get("/status", async (req, res) => {
     </head>
     <body>
       <div class="content-box">
-        <h1>📡 Status Server</h1>
+        <h1>Status Server 📡</h1>
         <p><strong>Database MongoDB:</strong> ${isConnected ? "✅ Connesso" : "❌ Disconnesso"}</p>
         <p><strong>Ora Server:</strong> ${serverTime}</p>
         <p><strong>Uptime Server:</strong> ${uptimeFormatted}</p>

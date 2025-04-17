@@ -8,16 +8,13 @@ const authRoutes = require("./routes/auth");
 const User = require("./models/User");
 require("dotenv").config();
 
-const app = express();
-const port = process.env.PORT || 3001;
-
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 
-// Configura le opzioni di Swagger
+// Configura Swagger
 const options = {
   definition: {
-    openapi: "3.0.0", // versione OpenAPI
+    openapi: "3.0.0", // Specifica la versione OpenAPI
     info: {
       title: "API Documentation",
       version: "1.0.0",
@@ -30,7 +27,22 @@ const options = {
 const specs = swaggerJsdoc(options);
 
 const app = express();
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs)); // Rotta per visualizzare la documentazione
+const port = process.env.PORT || 3001;
+
+// Usa Swagger per la documentazione
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+
+// Rotte delle API
+app.use("/api", authRoutes);
+
+// Rotta principale
+app.get("/", (req, res) => {
+  res.send("Benvenuto nell'API!");
+});
+
+app.listen(port, () => {
+  console.log(`Server in ascolto su http://localhost:${port}`);
+});
 
 // Middleware
 app.use(cors({
@@ -42,9 +54,6 @@ app.use(express.json());
 
 // Serve file statici (CSS, immagini)
 app.use(express.static(path.join(__dirname, "public")));
-
-// Rotte API
-app.use("/api", authRoutes);
 
 // Homepage stilizzata
 app.get("/", (req, res) => {

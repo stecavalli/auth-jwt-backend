@@ -94,3 +94,13 @@ Cookies (HttpOnly)
 ## 🧱 Middleware
 
 verifyToken: Middleware to verify the JWT token and protect routes.
+
+## 🌐 Web server home page
+
+On the Render site when you open your server's web page you will see 
+<br>
+something very similar to the following images:
+<br><br>
+![Backend home page](images/backend.png)
+<br>
+![Status server](images/backend2.png)

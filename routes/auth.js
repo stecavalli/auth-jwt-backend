@@ -72,9 +72,10 @@ router.get("/", (req, res) => {
   res.send("Benvenuto nell'API!");
 });
 
-// GET /api/users (solo per utenti autenticati)
+// GET /api/me (solo per utenti autenticati)
 router.get("/me", verifyToken, (req, res) => {
-  res.json({ user: req.user }); // req.user viene dal middleware
+  const { id, username, email } = req.user; // user è passato dal middleware
+  res.json({ user: { id, username, email } });
 });
 
 // GET /api/users - restituisce la lista utenti con chiave "users"

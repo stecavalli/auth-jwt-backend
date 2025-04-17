@@ -5,7 +5,7 @@ const router = express.Router();
 const User = require("../models/User");
 const verifyToken = require("../middleware/verifyToken");
 
-const JWT_SECRET = process.env.JWT_SECRET || "supersegreto";
+const JWT_SECRET = process.env.JWT_SECRET || "TUA_CHIAVE_SEGRETA";
 
 // REGISTER
 router.post("/register", async (req, res) => {
@@ -57,6 +57,7 @@ router.post("/login", async (req, res) => {
                       JWT_SECRET,
                     { expiresIn: "1d" }
                   );
+    
     res.cookie("token", token, {
       httpOnly: true,
       sameSite: "None",  // Richieste cross-origin
@@ -66,7 +67,7 @@ router.post("/login", async (req, res) => {
 
     res.status(200).json({ message: "Login riuscito" });
   } catch (err) {
-    console.error(err); // Aggiungi logging per debug
+    console.error(err);
     res.status(500).json({ message: "Errore nel server." });
   }
 });
@@ -85,6 +86,7 @@ router.get("/me", verifyToken, async (req, res) => {
     const user = await User.findById(req.user.id).select("id email username");
     res.json(user);
   } catch (error) {
+    console.error(err);
     res.status(500).json({ message: "Errore nel recupero utente" });
   }
 });

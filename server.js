@@ -5,48 +5,15 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const os = require("os");
 const authRoutes = require("./routes/auth");
-const User = require("./models/User");
+const User = require("./models/User"); // Assicurati che esista
 require("dotenv").config();
-
-const swaggerJsdoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
-
-// Configura Swagger
-const options = {
-  definition: {
-    openapi: "3.0.0", // Specifica la versione OpenAPI
-    info: {
-      title: "API Documentation",
-      version: "1.0.0",
-      description: "Documentazione delle API per il backend",
-    },
-  },
-  apis: ["./routes/*.js"], // Percorso ai file delle rotte
-};
-
-const specs = swaggerJsdoc(options);
 
 const app = express();
 const port = process.env.PORT || 3001;
 
-// Usa Swagger per la documentazione
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
-
-// Rotte delle API
-app.use("/api", authRoutes);
-
-// Rotta principale
-app.get("/", (req, res) => {
-  res.send("Benvenuto nell'API!");
-});
-
-app.listen(port, () => {
-  console.log(`Server in ascolto su http://localhost:${port}`);
-});
-
 // Middleware
 app.use(cors({
-  origin: "https://NOME_SITO_PERSONALIZZATO.netlify.app",
+  origin: "https://NOME_SITO_PERSONALIZZATO.netlify.app", // Cambia con il tuo sito reale
   credentials: true
 }));
 app.use(cookieParser());
@@ -54,6 +21,9 @@ app.use(express.json());
 
 // Serve file statici (CSS, immagini)
 app.use(express.static(path.join(__dirname, "public")));
+
+// Rotte API
+app.use("/api", authRoutes);
 
 // Homepage stilizzata
 app.get("/", (req, res) => {

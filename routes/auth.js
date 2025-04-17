@@ -41,7 +41,6 @@ router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Cambia 'username' con 'email' nel controllo
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(401).json({ message: "Credenziali non valide - Utente non trovato." });

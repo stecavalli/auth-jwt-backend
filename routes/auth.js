@@ -56,7 +56,7 @@ router.post("/login", async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "None",  // Assicurati che il frontend faccia richieste cross-origin
+      sameSite: "None",  // Richieste cross-origin
       secure: true,      // Usa HTTPS
       maxAge: 24 * 60 * 60 * 1000, // 1 giorno
     });

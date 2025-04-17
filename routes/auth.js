@@ -5,7 +5,7 @@ const router = express.Router();
 const User = require("../models/User");
 const verifyToken = require("../middleware/verifyToken");
 
-const JWT_SECRET = process.env.JWT_SECRET || "supersegreto";
+const JWT_SECRET = process.env.JWT_SECRET || "TUA_CHIAVE_SEGRETA";
 
 // REGISTER
 router.post("/register", async (req, res) => {
@@ -66,7 +66,7 @@ router.get("/me", verifyToken, (req, res) => {
 router.get("/users", verifyToken, async (req, res) => {
   try {
     const users = await User.find().select("-password");
-    res.json({ users }); // 👈 questo è importante!
+    res.json({ users });
   } catch (err) {
     res.status(500).json({ message: "Errore nel recupero degli utenti" });
   }

@@ -53,7 +53,11 @@ router.post("/login", async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: "1d" });
-
+    const token = jwt.sign(
+                    { id: user._id, username: user.username, email: user.email },
+                      JWT_SECRET,
+                    { expiresIn: "1d" }
+                  );
     res.cookie("token", token, {
       httpOnly: true,
       sameSite: "None",  // Richieste cross-origin
@@ -76,6 +80,14 @@ router.get("/", (req, res) => {
 router.get("/me", verifyToken, (req, res) => {
   const { id, username, email } = req.user; // user è passato dal middleware
   res.json({ user: { id, username, email } });
+});
+router.get("/me", verifyToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("id email username");
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: "Errore nel recupero utente" });
+  }
 });
 
 // GET /api/users - restituisce la lista utenti con chiave "users"

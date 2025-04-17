@@ -52,7 +52,6 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ message: "Credenziali non valide - Password errata." });
     }
 
-    const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: "1d" });
     const token = jwt.sign(
                     { id: user._id, username: user.username, email: user.email },
                       JWT_SECRET,

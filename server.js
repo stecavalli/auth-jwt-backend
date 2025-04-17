@@ -5,15 +5,36 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const os = require("os");
 const authRoutes = require("./routes/auth");
-const User = require("./models/User"); // Assicurati che esista
+const User = require("./models/User");
 require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 3001;
 
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
+
+// Configura le opzioni di Swagger
+const options = {
+  definition: {
+    openapi: "3.0.0", // versione OpenAPI
+    info: {
+      title: "API Documentation",
+      version: "1.0.0",
+      description: "Documentazione delle API per il backend",
+    },
+  },
+  apis: ["./routes/*.js"], // Percorso ai file delle rotte
+};
+
+const specs = swaggerJsdoc(options);
+
+const app = express();
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs)); // Rotta per visualizzare la documentazione
+
 // Middleware
 app.use(cors({
-  origin: "https://NOME_SITO_PERSONALIZZATO.netlify.app", // Cambia con il tuo sito reale
+  origin: "https://NOME_SITO_PERSONALIZZATO.netlify.app",
   credentials: true
 }));
 app.use(cookieParser());

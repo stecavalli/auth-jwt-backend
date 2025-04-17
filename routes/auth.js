@@ -57,7 +57,15 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// Esempio di route GET api
+/**
+ * @swagger
+ * /api:
+ *   get:
+ *     description: Restituisce un messaggio di benvenuto
+ *     responses:
+ *       200:
+ *         description: Messaggio di benvenuto
+ */
 router.get("/", (req, res) => {
   res.send("Benvenuto nell'API!");
 });

@@ -38,31 +38,32 @@ router.post("/register", async (req, res) => {
 
 // LOGIN
 router.post("/login", async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ username });
+    // Cambia 'username' con 'email' nel controllo
+    const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).json({ message: "Credenziali non valide." });
+      return res.status(401).json({ message: "Credenziali non valide - Utente non trovato." });
     }
 
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
-      return res.status(401).json({ message: "Credenziali non valide." });
+      return res.status(401).json({ message: "Credenziali non valide - Password errata." });
     }
 
-    const token = jwt.sign({ id: user._id, username: user.username }, JWT_SECRET, { expiresIn: "1d" });
+    const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: "1d" });
 
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "None",
-      secure: true,
-      maxAge: 24 * 60 * 60 * 1000,
+      sameSite: "None",  // Assicurati che il frontend faccia richieste cross-origin
+      secure: true,      // Usa HTTPS
+      maxAge: 24 * 60 * 60 * 1000, // 1 giorno
     });
 
     res.status(200).json({ message: "Login riuscito" });
   } catch (err) {
-    console.error(err);
+    console.error(err); // Aggiungi logging per debug
     res.status(500).json({ message: "Errore nel server." });
   }
 });

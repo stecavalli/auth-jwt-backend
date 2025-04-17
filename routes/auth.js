@@ -57,6 +57,11 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// Esempio di route GET api
+router.get("/", (req, res) => {
+  res.send("Benvenuto nell'API!");
+});
+
 // GET /api/users (solo per utenti autenticati)
 router.get("/me", verifyToken, (req, res) => {
   res.json({ user: req.user }); // req.user viene dal middleware

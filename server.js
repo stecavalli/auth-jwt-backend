@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const os = require("os");
 const authRoutes = require("./routes/auth");
-const User = require("./models/User"); // Assicurati che esista
+const User = require("./models/User");
 require("dotenv").config();
 
 const app = express();
@@ -28,7 +28,7 @@ app.use("/api", authRoutes);
 // Middleware di gestione errori
 app.use((err, req, res, next) => {
   console.error(err.stack); // Stampa lo stack dell'errore per il debug
-  res.status(500).json({ message: "Errore interno del server." }); // Risposta generica per l'errore
+  res.status(500).json({ message: "Errore interno del server." });
 });
 
 // Homepage stilizzata

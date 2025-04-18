@@ -60,23 +60,8 @@ npm install
 npm start
 <br><br>
 
-<b>When you start the server you will see something like this:</b>
 <br><br>
-PowerShell 7.5.0
-<br>
-PS C:\Users\Stefano\Desktop\auth-jwt-backend-master> npm start
-<br><br>
-backend@1.0.0 start
-<br>
-node server.js
-<br><br>
-Connected to MongoDB
-<br>
-Server listening on port 3001
-<br><br>
-<b>Open your browser and type localhost:3001</b>
-<br>
-<b>Replace 3001 with the port number the server is listening on</b>
+![Powershell](images/powershell.png)
 <br>
 
 ## 🌐Localhost Home page

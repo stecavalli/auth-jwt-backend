@@ -45,19 +45,37 @@ cd auth-jwt-backend
 <br>
 with the following:</i>
 <br><br>
-JWT_SECRET=your_secret_key
+JWT_SECRET=your_secret_key  &nbsp;&nbsp;&nbsp;&nbsp;*** Secret key to be set directly on the [Render](https://www.render.com/) site. ***
 <br>
-MONGO_URI=your_mongo_database_url
+MONGO_URI=your_mongo_database_url  &nbsp;&nbsp;&nbsp;&nbsp;*** Url of your MongoDb database to set on the [Render](https://www.render.com/) site. ***
+<br>
+NODE_ENV=development
+<br>
+PORT: 3001  &nbsp;&nbsp;&nbsp;&nbsp;*** URL for local tests, replace 3001 with the actual port number your server is listening on. ***
 <br><br>
 
-<b> 📦 Install dependencies:</b>
+## ✏️ Local Test File Changes
+This repository and its frontend repository are configured to run on the servers listed above.
+<br>
+To run locally on your PC, some changes to three files in the backend are required, and the .env files 
+<br>
+need to be added to both repositories.
+<br>
+Here are the changes needed:
+<br>
+Go to the [auth-jwt-frontend](https://github.com/stecavalli/auth-jwt-frontend) repository to see the changes you need to make.
+<br>
+In this repository you need to add the .env file as described above and modify the server.js, auth.js and verifyToken.js files.
+<br>
+Use the modified files you find inside the local_test folder, read the readme.txt file for the changes.
+
+## 📦 Install dependencies:
 
 npm install
-<br><br>
 
-<b> ▶️ Start the server:</b>
+## ▶️ Start the server:
 
-npm start
+node server.js
 <br><br>
 ![Powershell](images/powershell.png)
 <br>

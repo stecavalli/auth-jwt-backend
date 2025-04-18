@@ -81,8 +81,7 @@ npm install
 
 node server.js
 <br><br>
-<img src="images/powershell7.png" width="400"/>
-![Powershell](images/powershell7.png)
+<img src="images/powershell7.png" width="600"/>
 <br>
 
 ## 🌐Localhost Home page
@@ -93,7 +92,7 @@ Replace <b><i>3001</i></b> with the port number the server is listening on.
 <br>
 In your browser you will see something like this:
 <br><br>
-<img src="images/localhost3001.png" width="400"/>
+<img src="images/localhost3001.png" width="600"/>
 <br>
 
 ## 🚀 Deployment  
@@ -142,6 +141,6 @@ On the Render site when you open your server's web page you will see
 <br>
 something very similar to the following images:
 <br><br>
-<img src="images/backend.png" width="400"/>
+<img src="images/backend.png" width="600"/>
 <br>
-<img src="images/backend2.png" width="400"/>
+<img src="images/backend2.png" width="600"/>

@@ -67,7 +67,7 @@ Go to the [auth-jwt-frontend](https://github.com/stecavalli/auth-jwt-frontend) r
 <br>
 In this repository you need to add the .env file as described above and modify the server.js, auth.js and verifyToken.js files.
 <br>
-Use the modified files you find inside the local_test folder, read the readme.txt file for the changes.
+Use the modified files you find inside the local_test folder in this repository, read the readme.txt file for the changes.
 
 ## 📦 Install dependencies:
 

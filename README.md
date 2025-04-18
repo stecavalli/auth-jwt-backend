@@ -77,7 +77,7 @@ npm install
 
 node server.js
 <br><br>
-![Powershell](images/powershell.png)
+![Powershell](images/powershell7.png)
 <br>
 
 ## 🌐Localhost Home page
@@ -88,7 +88,7 @@ Replace <b><i>3001</i></b> with the port number the server is listening on
 <br>
 In your browser you will see something like this:
 <br><br>
-![Localhost home page](images/localhost.png)
+![Localhost Home page](images/local_host.png)
 <br>
 
 ## 🚀 Deployment  

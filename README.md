@@ -30,14 +30,6 @@ The [auth-jwt-frontend](https://github.com/stecavalli/auth-jwt-frontend) reposit
 <br>
 <b>Logout:</b> Clear JWT cookie on logout.
 
-## 🔧 Environment Setup
-
-<i>Create a .env file with the following:</i>
-<br><br>
-JWT_SECRET=your_secret_key
-<br>
-MONGO_URI=your_mongo_database_url
-
 ## 🖥️ Local installation
 
 <b> 📦 Clone the repository:</b>
@@ -47,13 +39,52 @@ git clone https://github.com/stecavalli/auth-jwt-backend.git
 cd auth-jwt-backend
 <br>
 
+<b> 🔧 Environment Setup</b>
+
+<i>Create a .env file (and place it in the root folder where the server.js file is located) 
+<br>
+with the following:</i>
+<br><br>
+JWT_SECRET=your_secret_key
+<br>
+MONGO_URI=your_mongo_database_url
+<br><br>
+
 <b> 📦 Install dependencies:</b>
 
 npm install
+<br><br>
 
 <b> ▶️ Start the server:</b>
 
 npm start
+<br><br>
+
+<b>When you start the server you will see something like this:</b>
+<br><br>
+PowerShell 7.5.0
+<br>
+PS C:\Users\Stefano\Desktop\auth-jwt-backend-master> npm start
+<br><br>
+backend@1.0.0 start
+<br>
+node server.js
+<br><br>
+Connected to MongoDB
+<br>
+Server listening on port 3001
+<br><br>
+<b>Open your browser and type localhost:3001</b>
+<br>
+<b>Replace 3001 with the port number the server is listening on</b>
+<br>
+
+## 🌐Localhost Home page
+
+In your browser you will see something like this:
+<br><br>
+![Localhost home page](images/localhost.png)
+<br>
 
 ## 🚀 Deployment  
 You can deploy the backend on platforms like [Render](https://render.com), [Railway](https://railway.app), or [Heroku](https://www.heroku.com/).  

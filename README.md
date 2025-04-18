@@ -86,9 +86,9 @@ node server.js
 
 ## 🌐Localhost Home page
 
-Open your browser and type <b><i>localhost:3001</i></b>
+Open your browser and type <b><i>localhost:3001</i></b>.
 <br>
-Replace <b><i>3001</i></b> with the port number the server is listening on
+Replace <b><i>3001</i></b> with the port number the server is listening on.
 <br>
 In your browser you will see something like this:
 <br><br>

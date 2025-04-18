@@ -88,7 +88,7 @@ Replace <b><i>3001</i></b> with the port number the server is listening on
 <br>
 In your browser you will see something like this:
 <br><br>
-![Localhost Home page](images/local_host.png)
+![Localhost Home page](images/localhost3001.png)
 <br>
 
 ## 🚀 Deployment  

@@ -51,7 +51,7 @@ MONGO_URI=your_mongo_database_url  &nbsp;&nbsp;&nbsp;&nbsp;*** Url of your Mongo
 <br>
 NODE_ENV=development
 <br>
-PORT: 3001  &nbsp;&nbsp;&nbsp;&nbsp;*** URL for local tests, replace 3001 with the actual port number your server is listening on. ***
+PORT: 3001  &nbsp;&nbsp;&nbsp;&nbsp;*** PORT for local tests, replace 3001 with the actual port number your server is listening on. ***
 <br><br>
 
 ## ✏️ Local Test File Changes
@@ -127,7 +127,7 @@ JWT
 <br>
 MongoDB
 <br>
-bcrypt
+bcryptjs
 <br>
 Cookies (HttpOnly)
 

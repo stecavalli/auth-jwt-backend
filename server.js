@@ -14,7 +14,9 @@ const port = process.env.PORT;
 
 // Middleware
 app.use(cors({
-  origin: "https://TUO_NOME_SITO.netlify.app", // Cambia con il tuo sito reale
+  origin: (origin, callback) => {
+    callback(null, true); // accetta tutto (solo per sviluppo!)
+  },
   credentials: true
 }));
 app.use(cookieParser());

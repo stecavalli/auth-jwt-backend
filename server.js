@@ -20,6 +20,10 @@ app.use(cors({
 
 app.use(cookieParser());
 app.use(express.json());
+app.use((req, res, next) => {
+  console.log('Request from origin:', req.headers.origin);
+  next();
+});
 
 // Serve file statici (CSS, immagini)
 app.use(express.static(path.join(__dirname, "public")));

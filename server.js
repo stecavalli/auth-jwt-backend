@@ -20,8 +20,9 @@ app.use(cors({
 
 app.use(cookieParser());
 app.use(express.json());
+
 app.use((req, res, next) => {
-  console.log('Request from origin:', req.headers.origin);
+  console.log(`[${req.method}] ${req.path} from origin: ${req.headers.origin}`);
   next();
 });
 

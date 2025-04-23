@@ -14,11 +14,10 @@ const port = process.env.PORT;
 
 // Middleware
 app.use(cors({
-  origin: (origin, callback) => {
-    callback(null, true); // accetta tutto (solo per sviluppo!)
-  },
+  origin: true, // accetta tutte le origini dinamicamente
   credentials: true
 }));
+
 app.use(cookieParser());
 app.use(express.json());
 

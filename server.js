@@ -14,17 +14,12 @@ const port = process.env.PORT;
 
 // Middleware
 app.use(cors({
-  origin: true, // accetta tutte le origini dinamicamente
+  origin: "https://TUO_NOME_SITO.netlify.app", // Cambia con il tuo sito reale
   credentials: true
 }));
 
 app.use(cookieParser());
 app.use(express.json());
-
-app.use((req, res, next) => {
-  console.log(`[${req.method}] ${req.path} from origin: ${req.headers.origin}`);
-  next();
-});
 
 // Serve file statici (CSS, immagini)
 app.use(express.static(path.join(__dirname, "public")));
